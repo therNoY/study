@@ -1,8 +1,6 @@
 package leetCode.tags.backtrack;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 46. 全排列
@@ -26,7 +24,8 @@ import java.util.List;
 public class Code46全排列 {
 
     public static void main(String[] args) {
-        System.out.println(new Code46全排列().permute(new int[]{1, 2, 3}));
+//        System.out.println(new Code46全排列().permute(new int[]{1, 2, 3}));
+        System.out.println(new Code46全排列().permuteUnique(new int[]{1, 1, 2}));
     }
 
     public List<List<Integer>> permute(int[] nums) {
@@ -46,6 +45,42 @@ public class Code46全排列 {
                     getOnePermute(nums, choiceNum, res);
                     choiceNum.removeLast();
                 }
+            }
+        }
+    }
+
+    /**
+     * 47. 全排列 II
+     * 给定一个可包含重复数字的序列，返回所有不重复的全排列。
+     * 示例:
+     * 输入: [1,1,2]
+     * 输出:
+     * [
+     * [1,1,2],
+     * [1,2,1],
+     * [2,1,1]
+     * ]
+     */
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums.length == 0) return res;
+        Arrays.sort(nums);
+        backtrack(res, new ArrayList<>(), new boolean[nums.length], nums);
+        return res;
+    }
+
+    private void backtrack(List<List<Integer>> res, List<Integer> list, boolean[] used, int[] nums) {
+        if (list.size() == nums.length) {
+            res.add(new ArrayList<>(list));
+        } else if (list.size() < nums.length) {
+            for (int i = 0; i < nums.length; i++) {
+                if (used[i]) continue;
+                if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue;
+                list.add(nums[i]);
+                used[i] = true;
+                backtrack(res, list, used, nums);
+                list.remove(list.size() - 1);
+                used[i] = false;
             }
         }
     }
