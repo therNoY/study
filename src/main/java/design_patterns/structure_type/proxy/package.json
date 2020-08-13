@@ -1,0 +1,11 @@
+{
+  "name": "proxy",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "代理模式，easy_proxy 是最简单的基础思想",
+    "extend": "",
+    "extend2": "",
+    "extend3": ""
+    
+  }
+}

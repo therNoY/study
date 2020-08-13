@@ -1,0 +1,11 @@
+{
+  "name": "java_generic",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "java 泛型学习测试",
+    "extend": "",
+    "extend2": "",
+    "extend3": ""
+    
+  }
+}

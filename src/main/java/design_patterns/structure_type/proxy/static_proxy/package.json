@@ -1,0 +1,11 @@
+{
+  "name": "static_proxy",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "静态代理",
+    "extend": "",
+    "extend2": "",
+    "extend3": ""
+    
+  }
+}

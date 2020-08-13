@@ -1,0 +1,11 @@
+{
+  "name": "连接池",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "学习连接池",
+    "extend": "",
+    "extend2": "",
+    "extend3": ""
+    
+  }
+}

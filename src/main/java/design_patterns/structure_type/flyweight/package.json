@@ -1,0 +1,11 @@
+{
+  "name": "flyweight",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "享元模式",
+    "extend": "享元模式是一种结构型模式 享元模式可以重用对象 java 的常量池",
+    "extend2": "",
+    "extend3": ""
+    
+  }
+}

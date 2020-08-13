@@ -1,0 +1,11 @@
+{
+  "name": "observe",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "观察者模式",
+    "extend": "",
+    "extend2": "",
+    "extend3": ""
+    
+  }
+}

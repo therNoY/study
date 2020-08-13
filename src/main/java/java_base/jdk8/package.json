@@ -1,0 +1,11 @@
+{
+  "name": "jdk8",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "java 8 新特性",
+    "extend": "",
+    "extend2": "",
+    "extend3": ""
+    
+  }
+}

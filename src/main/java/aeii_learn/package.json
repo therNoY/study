@@ -1,0 +1,11 @@
+{
+  "name": "aeii_learn",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "开源项目aeii 的测试",
+    "extend": "",
+    "extend2": "",
+    "extend3": ""
+    
+  }
+}

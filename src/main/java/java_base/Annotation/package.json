@@ -1,0 +1,11 @@
+{
+  "name": "Annotation",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "学习注解的包",
+    "extend": "",
+    "extend2": "",
+    "extend3": ""
+    
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "combination",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "组合模式(Composite Pattern)",
+    "extend": "：组合多个对象形成树形结构以表示具有 “整体—部分” 关系的层次结构。",
+    "extend2": "组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性，",
+    "extend3": "组合模式又可以称为 “整体—部分”(Part-Whole) 模式，它是一种对象结构型模式。"
+    
+  }
+}

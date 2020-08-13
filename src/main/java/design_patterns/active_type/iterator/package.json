@@ -1,0 +1,11 @@
+{
+  "name": "iterator",
+  "version": "1.0.0",
+  "dependencies": {
+    "description": "",
+    "extend": "迭代器模式(Iterator Pattern)：提供一种方法来访问聚合对象，",
+    "extend2": "而不用暴露这个对象的内部表示，其别名为游标(Cursor)。迭代器模式是一种对象行为型模式。",
+    "extend3": ""
+    
+  }
+}
