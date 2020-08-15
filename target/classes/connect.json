@@ -1,9 +1,0 @@
-{
-  "type": "mysql",
-  "name": "u3cdb",
-  "driver": "com.mysql.cj.jdbc.Driver",
-  "url": "jdbc:mysql://10.0.11.154:3306/u3cdb",
-  "username": "u3cuser",
-  "password": "u3cuser123",
-  "maxConn": "100"
-}
