@@ -3,6 +3,7 @@ package leetCode.tags.dynamic_programming;
 import java.util.*;
 
 /**
+ * 139. 单词拆分
  * 给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，
  * 判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。
  * 说明：
@@ -24,11 +25,11 @@ import java.util.*;
  * 链接：https://leetcode-cn.com/problems/word-break
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class WordBreak {
+public class Code139单词拆分 {
 
     public static void main(String[] args) {
-        System.out.println(new WordBreak().wordBreak("catsandog", Arrays.asList("cats", "dog", "do", "an", "sand", "and", "cat")));
-        System.out.println(new WordBreak().wordBreak("leetcode", Arrays.asList("leet", "code")));
+        System.out.println(new Code139单词拆分().wordBreak("catsandog", Arrays.asList("cats", "dog", "do", "an", "sand", "and", "cat")));
+        System.out.println(new Code139单词拆分().wordBreak("leetcode", Arrays.asList("leet", "code")));
     }
 
     /**
