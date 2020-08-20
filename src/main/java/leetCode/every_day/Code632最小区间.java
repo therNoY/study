@@ -19,7 +19,7 @@ import java.util.List;
  * -105 <= 元素的值 <= 105
  * 对于使用Java的用户，请注意传入类型已修改为List<List<Integer>>。重置代码模板后可以看到这项改动。
  */
-public class SmallestRange {
+public class Code632最小区间 {
 
     public int[] smallestRange(List<List<Integer>> nums) {
         // 1.找到最小和最大值
