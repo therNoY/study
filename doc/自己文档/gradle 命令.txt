@@ -1,0 +1,12 @@
+gradle  tasks 查看当前工程中可使用的任务有哪些
+gradle  assemble - 编译打包该工程内容
+		build - 编译打包并测试该工程
+		buildDependents - 编译打包并测试该工程和所有依赖它的工程
+		buildNeeded - 编译打包并测试该工程和它依赖的所有工程
+		classes - 编译打包主要的类文件
+		clean - 删除编译目录
+		jar - 编译打成jar包，这个jar包包含主要的类文件
+		testClasses - 编译打包测试类文件
+
+maven 转gradle项目 gradle init --type maven
+----------plugins 是 apply plugin 更加高级版本的书写用来方第三方插件

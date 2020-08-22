@@ -1,0 +1,191 @@
+计划：
+工作之余刷一下牛客网的题 不会的解决 然后学习linux 和其他知识
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+牛客网题
+
+基础
+	字符串比较
+	比较的时候比的是ASCII码，从第一位开始比，如果第一位能比较出谁大谁小则直接返回，若相等，比较下一个字符
+	
+	transient修饰的不参与序列化
+	
+	hashCode和equals https://blog.csdn.net/javazejian/article/details/51348320
+	
+	
+	
+异常
+	throwable是所有异常的根，java.lang.Throwable
+	Error是错误，java.lang.Error
+	Exception是异常，java.lang.Exception
+	
+	二、Exception
+	一般分为Checked异常和Runtime异常，所有RuntimeException类及其子类的实例被称为Runtime异常，不属于该范畴的异常则被称为CheckedException。
+	①Checked异常
+	只有java语言提供了Checked异常，Java认为Checked异常都是可以被处理的异常，所以Java程序必须显示处理Checked异常。如果程序没有处理Checked异常，
+	该程序在编译时就会发生错误无法编译。
+	这体现了Java的设计哲学：没有完善错误处理的代码根本没有机会被执行。对Checked异常处理方法有两种
+	1 当前方法知道如何处理该异常，则用try...catch块来处理该异常。
+	2 当前方法不知道如何处理，则在定义该方法是声明抛出该异常。
+	我们比较熟悉的Checked异常有
+	Java.lang.ClassNotFoundException
+	Java.lang.NoSuchMetodException
+	java.io.IOException
+	②RuntimeException
+	Runtime如除数是0和数组下标越界等，其产生频繁，处理麻烦，若显示申明或者捕获将会对程序的可读性和运行效率影响很大。所以由系统自动检测并将它们交给缺省的异常处理程序。当然如果你有处理要求也可以显示捕获它们。
+	我们比较熟悉的RumtimeException类的子类有
+	Java.lang.ArithmeticException
+	Java.lang.ArrayStoreExcetpion
+	Java.lang.ClassCastException
+	Java.lang.IndexOutOfBoundsException
+	Java.lang.NullPointerException
+
+	三、Error
+	当程序发生不可控的错误时，通常做法是通知用户并中止程序的执行。与异常不同的是Error及其子类的对象不应被抛出。
+	Error是throwable的子类，代表编译时间和系统错误，用于指示合理的应用程序不应该试图捕获的严重问题。
+	Error由Java虚拟机生成并抛出，包括动态链接失败，虚拟机错误等。程序对其不做处理。
+
+final finally finalize
+	1. final是关键字，final可以修饰类、方法、属性。
+		如果一个类被final修饰，那么这个类就是最终类，不能派生出新的子类，不能作为父类被继承，该类中的所有方法都不能被重写，但是final类中的成员变量是可以改变的，要想final类中的成员变量的不可以改变，必须给成员变量添加final修饰。因此，一个类不能同时被final和abstract修饰，这两个关键字相互矛盾。
+		如果final修饰方法，那么这个方法是最终方法，不允许任何子类重写该方法，但子类仍可以使用该方法，注意：final参数用来表示这个参数在这个函数内部不允许被修改。
+		final修饰属性，被final修饰的变量不可变。这里的不可变有两重含义：引用不可变和对象不可变。final指的是引用不可变，即它只能指向初始化时指向的那个对象，而不关心指向对象内容的变化。因此，被final修饰的变量必须初始化，该变量其实就是常量。
+	2. finally作为异常处理的一部分，只能用在try/catch语句快中，finally代码块中的语句一定会被执行，经常被用来释放资源，如IO流和数据库资源的释放。
+	3. finalize是Object类的一个方法，该方法在Object类中声明：
+			protected void finalize() throws Throwable { } 
+		在垃圾回收器执行时会调用被回收对象的finalize()方法，可以覆盖此方法来实现对其资源的回收。注意：一旦垃圾回收器准备释放某个对象占用的空间，将首先调该对象的
+	finalize()方法，并且在下一次垃圾回收动作发生时，才真正将该对象占用的内存回收。
+	
+jdbc PreparedStatements statement
+
+	在开发中使用PreparedStatements，不要使用statement
+	为什么呢？ 
+	PreparedStatements是预编译的，PreparedStatements实例包涵已编译的sql语句，所以其执行呢速度要快于statement对象。
+	PreparedStatements作为statement的子类，继承了statement的所有方法，三种方法，excute,excuteQuery和excuteUpdate已被更改以使之不再需要参数。
+	PreparedStatements的代码可读性，可维护性强于statement.
+	PreparedStatements 可以预防sql注入
+	极大的提高了安全性
+
+Cookie 和 Session 
+
+
+cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户的状态，
+就使用response向客户端浏览器颁发一个cookie。
+客户端浏览器会把cookie保存起来。当浏览器再次请求该网站时，浏览器就会把请求地址和cookie一同给服务器。
+服务器检查该cookie，从而判断用户的状态。服务器还可以根据需要修改cookie的内容。
+session是另一种记录客户状态的机制。不同的是cookie保存在客户端浏览器中，而session保存在服务器上。
+客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上，这就是session。
+客户端浏览器再次访问时只需要从该session中查找该客户的状态就可以了。
+ 如果说cookie机制是通过检查客户身上的“通信证”，那么session机制就是通过检查服务器上的“客户明细表”来确认客户身份。
+	
+集合
+	。
+　　Iterator是Java迭代器最简单的实现，为List设计的ListIterator具有更多的功能，它可以从两个方向遍历List，也可以从List中插入和删除元素。
+
+
+	
+	如何权衡是使用无序的数组还是有序的数组？
+	有序数组最大的好处在于查找的时间复杂度是O(log n)，
+
+数据结构
+	二叉树性质
+	叶子节点个数=度为2的结点个数加1 
+	设叶节点个数为n0 度为1的节点个数为n1 度为2的节点个数是n2 总节点为n B是所有的度
+	|n0 + n1 + n2 = n;
+	|2n2 + n1 = B;     => n0 = n2 + 1;
+	|B + 1 = n;
+	完全二叉树 度为1的节点个数只能为1 或者为 0 推出其他性质
+	一个完全二叉树节点为n 那么叶节点的个数为(n+1)/2取整 有根节点的个数(n-1)/2取整
+	根节点编号为0"
+	如果i>0,则序号为i的结点的双亲结点的序号是：（i-2）/2,如果i=0，则序号为i的结点是根结点，无双亲结点。  
+	如果2i+1<n,则序号为i的结点的左孩子结点的序号是2i+1，2i+1>n,则序号为i的结点无左孩子。
+	如果2i+2<n,则序号为i的结点的右孩子结点的序号是2i+2，2i+2>n,则序号为i的结点无右孩子。
+	根节点编号为1"
+	如果2i<n,则序号为i的结点的左孩子结点的序号是2i，2i>n,则序号为i的结点无左孩子。
+	如果2i+1<n,则序号为i的结点的右孩子结点的序号是2i+1，2i+1>n,则序号为i的结点无右孩子。
+
+	
+	
+	
+	一趟结束后能够确定一个元素的最终位置的排序方法有： 简单选择排序、快速排序、冒泡排序、堆排序
+
+	1.二叉排序树：
+		（1）若左子树不空，则左子树上所有结点的值均小于它的根结点的值；
+		（2）若右子树不空，则右子树上所有结点的值均大于它的根结点的值；
+		（3）左、右子树也分别为二叉排序树；
+		（4）没有键值相等的节点。
+	2.排序
+		  冒泡 快速 插入 归并 选择 堆 --待完成
+		   
+	一个空栈，如果有顺序输入：a1，a2，a3。。。an（个数大于3），而且输出第一个为an-1,那么所有都出栈后，（）
+	A.输出的最后元素一定为an
+	B.输出的最后元素一定为a1
+	C.不能确定元素a1~an-2在输出顺序
+	D.an-2一定比an-3先出
+	
+	既然an-1先出栈，说明 an-2, an-3已经入栈并且还未出栈，所以D肯定是对的
+	B的话an始终不进栈，a1~an-2都出栈了以后再进栈，这时候弹出的是an为最后一个
+	(这个题的意思就是考栈 但是题意表达不清楚，在进栈的时候可能有数据在pop,所以这个题当an-3进去出来了an-2才进去 D也不对)
+
+	利用栈完成数制转换，将十进制的169转换为八进制（）(要理解十进制转八进制的算法) --待完成
+	
+	递归会造成 要消耗大量的内存空间，程序执行慢，甚至无法执行 占用CPU的处理时间更多 方法要进栈出站
+	
+	以下关于链表和数组说法正确的是（）
+		数组从栈中分配空间，链表从堆中分配空间
+		数组插入或删除元素的时间复杂度O(n)，链表的时间复杂度O(1)
+		数组利用下标定位，时间复杂度为O(1)，链表定位元素时间复杂度O(n)
+		对于add和remove，ArrayList要比LinkedList快 -->List的比较
+		正确答案: A B C   你的答案: 空 (错误)
+		
+DB
+	
+	存在一张电商交易订单表order如下:
+	id order_no shop_id user_id create_time
+	1 E10001 201 101 2018-09-01 12:00:00
+	2 E10002 202 102 2018-09-01 12:01:00
+	3 E10003 201 103 2018-09-01 12:03:00
+	统计订单销量(订单量)前十的店铺及到目前的订单量(一行记录算一个订单,
+	order_no唯一)的sql: 
+	你的答案 (错误)
+	1 select shop_id,count(*) from order group by shop_id
+	参考答案 
+	(1) select shop_id,count(*) as num from order where 1 group by shop_id order by num desc limit 10
+	
+	roup by 的字段一定要被select才行，否则会报错
+	分组后筛选用having
+	desc 从大到小 asc从小到大
+
+
+数学
+
+网络
+	关于https说法错误的是(    )
+	正确答案: C   你的答案: D (错误)
+	非对称加密相比对称加密更加安全
+	非对称加密算法对加密内容的长度有限制
+	CA数字证书作用之一是私钥分发
+	数字签名的签发过程是私钥加密，公钥解密
+linux
+	ls -al查看隐藏文件
+	
+	修改文件或目录的权限的命令是1;修改某个文件或目录的所有者和所属的组的命令是2
+	参考答案 
+	(1) chmod
+	(2) chown
+	
+	压缩的日志文件"youzan.log.gz"中查找关键字"exception"并统计出现次数1
+	参考答案 
+	(1) zgrep exception youzan.log.gz | wc -l 或 zcat youzan.log.gz | grep exception | wc -l

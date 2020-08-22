@@ -1,0 +1,112 @@
+安装Centos需要安装的东西
+1. 设置用户
+1.安装 vim https://www.cnblogs.com/duanwandao/p/9947881.html
+Centos安装wget命令 yum -y install wget
+1.设置网路  https://blog.csdn.net/sfeng95/article/details/62239539 
+2. 安装Vsftp https://www.cnblogs.com/lyongde/p/3187711.html
+
+安装 rz sz        yum install  -y lrzsz 
+
+安装jdk 1.8 https://blog.csdn.net/jinhaijing/article/details/82668583
+# 添加java的环境变量
+export JAVA_HOME=/usr/jdk1.8.0_211
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+
+
+docker https://www.cnblogs.com/qgc1995/p/9553572.html
+
+
+docker search ** 搜索镜像
+docker ps 查看当前正在运行的容器
+docker ps -a 查看所有容器的状态
+docker pull 拉取镜像
+docker rmi 删除镜像
+docker start/stop id/name 启动/停止某个容器
+docker attach id 进入某个容器(使用exit退出后容器也跟着停止运行)
+docker exec -ti id 启动一个伪终端以交互式的方式进入某个容器（使用exit退出后容器不停止运行）
+docker images 查看本地镜像
+docker rm id/name 删除某个容器
+docker rmi id/name 删除某个镜像
+docker run --name test -ti ubuntu /bin/bash  复制ubuntu容器并且重命名为test且运行，然后以伪终端交互式方式进入容器，运行bash
+docker build -t soar/centos:7.1 .  通过当前目录下的Dockerfile创建一个名为soar/centos:7.1的镜像
+docker run -d -p 2222:22 --name ng nginx -p以镜像nginx创建名为ng的容器，-d并以后台模式运行，并做端口映射到宿主机2222端口，P参数重启容器宿主机端口会发生改变
+dcoker inspect id/name 查看容器信息
+docker stop id/name 停止容器
+docker kill id/name 强行停止容器
+docker start id/name 启动已停止的容器
+docker container logs  id/name 查看容器的日志
+docker container exec -it  id/name /bin/bash 进入容器
+dcoker top id/name 查看容器的内部进程
+
+  
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.6
+
+Mysql
+
+docker pull mysql:5.6
+docker run --name mysql -p 3306:3306 -v /docker/mysql:/etc/mysql  -e MYSQL_ROOT_PASSWORD=mihao2018 -d mysql:5.6
+create user 'mihao'@'%' Identified by 'mihao2018'
+GRANT privileges ON toolset.* TO 'mihao'@'%'
+
+
+VsFtpd https://blog.csdn.net/qq_41201816/article/details/83930133
+docker pull fauria/vsftpd
+
+docker run -d -p 21:21 -p 20:20 -p 21100-21110:21100-21110 -v /vsftpd:/home/vsftpd -e FTP_USER=root -e FTP_PASS=root -e PASV_ADDRESS=192.168.120.88 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 --name vsftpd --restart=always fauria/vsftpd
+
+
+Tomcat https://blog.csdn.net/qq_26709459/article/details/80475068
+
+
+redis 
+
+docker run --name redis -p 6379:6379 -v /docker/redis/data:/data -v /docker/redis/conf/redis.conf:/etc/redis/redis.conf -d redis redis-server /etc/redis/redis.conf
+
+docker run --name redis -p 6379:6379 -d redis --requirepass "mihao@redis"
+
+
+mongodb
+https://www.cnblogs.com/AmbitiousMice/p/9295899.html
+
+docker run -d -p 27017:27017  --name mongo -v ~/mongo:/data/db \
+    -e MONGO_INITDB_ROOT_USERNAME=root \
+    -e MONGO_INITDB_ROOT_PASSWORD=root \
+    mongo
+docker run -p 27017:27017 -v ~/mongo:/data/db --name mongo -d mongo  --auth 
+db.createUser( { user: "admin",  pwd: "admin",  roles: [ { role: "root", db: "admin" } ] } )  
+db.createUser({ user: "mihao", pwd: "mihao2018", roles: [{ role: "userAdminAnyDatabase", db: "admin" }] })
+
+elasticsearch
+docker pull elasticsearch:6.4.0
+chmod 777 /docker/elasticsearch/data/
+ docker run -p 9200:9200 -p 9300:9300 --name es \
+  -e "discovery.type=single-node" \
+  -e "cluster.name=elasticsearch" \
+  -v /docker/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
+  -v /docker/elasticsearch/data:/usr/share/elasticsearch/data \
+  -d elasticsearch:6.4.0
+  
+  
+  
+  
+  zookeeper
+  docker pull zookeeper
+  docker run -d -p 2181:2181 -v /docker/zookeeper/data/:/data/ --name zookeeper  zookeeper
+  
+ rabbbitmq https://www.cnblogs.com/angelyan/p/11218260.html#_label1
+docker run -d  --name rabbitmq -e RABBITMQ_DEFAULT_USER=mihao -e RABBITMQ_DEFAULT_PASS=mihao2018 -p 15672:15672 -p 5672:5672 rabbitmq:3.7.7-management
+
+oracle
+ https://blog.csdn.net/qq_38380025/article/details/80647620#commentBox
+  create user mihao identified by mihao;
+  
+  
+  
+  docker run -d -p 21:21 -p 20:20 -p 21100-21110:21100-21110 -v /docker/Ftpfile:/home/vsftpd -e FTP_USER=mihao -e FTP_PASS=mihao2018 -e--name vsftpd  fauria/vsftpd
+  
+  
+  
+  nginx https://www.jianshu.com/p/790163cec71e
+  docker run --name nginx -d -p 8765:80 nginx
