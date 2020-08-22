@@ -24,8 +24,8 @@ import java.util.*;
 public class Code46全排列 {
 
     public static void main(String[] args) {
-//        System.out.println(new Code46全排列().permute(new int[]{1, 2, 3}));
-        System.out.println(new Code46全排列().permuteUnique(new int[]{1, 1, 2}));
+        System.out.println(new Code46全排列().permute(new int[]{1, 2, 3, 4}));
+//        System.out.println(new Code46全排列().permuteUnique(new int[]{1, 1, 2}));
     }
 
     public List<List<Integer>> permute(int[] nums) {
