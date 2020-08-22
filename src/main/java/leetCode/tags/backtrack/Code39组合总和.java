@@ -14,7 +14,7 @@ public class Code39组合总和 {
 //        System.out.println(new Code39组合总和().combinationSum3(3, 9));
         System.out.println(new Code39组合总和().combinationSum4(new int[]{
                 2, 1, 3
-        }, 35));
+        }, 4));
     }
 
     /**
@@ -171,45 +171,31 @@ public class Code39组合总和 {
     int count;
 
     public int combinationSum4(int[] nums, int target) {
-        count = 0;
-        backtrack(nums, new ArrayList<>(), target, 0);
-        return count;
+//        count = 0;
+//        backtrack(nums, new ArrayList<>(), target);
+//        return count;
+        /**
+         * dp[i] 表示 目标数是j的前i个数组合总数量
+         */
+        int[] dp = new int[target+1];
+        dp[0] = 1;
+        for (int i = 1; i < target+1; i++) {
+            for (int j = 0; j < nums.length; j++) {
+                if (i >= nums[j]) dp[i] += dp[i - nums[j]];
+            }
+        }
+        return dp[target];
     }
 
-    public void backtrack(int[] nums, List<Integer> list, int target, int start) {
+    public void backtrack(int[] nums, List<Integer> list, int target) {
         if (target == 0) {
-            count += permuteUnique(list).size();
+            count++;
         } else if (target > 0) {
-            for (int i = start; i < nums.length; i++) {
+            for (int i = 0; i < nums.length; i++) {
                 list.add(nums[i]);
-                backtrack(nums, list, target - nums[i], i);
+                backtrack(nums, list, target - nums[i]);
                 list.remove(list.size() - 1);
             }
         }
     }
-
-    public List<List<Integer>> permuteUnique(List<Integer> list) {
-        List<List<Integer>> res = new ArrayList<>();
-        if (list.size() == 0) return res;
-        list.sort(Integer::compareTo);
-        backtrack3(res, new ArrayList<>(), new boolean[list.size()], list);
-        return res;
-    }
-
-    private void backtrack3(List<List<Integer>> res, List<Integer> list, boolean[] used, List<Integer> nums) {
-        if (list.size() == nums.size()) {
-            res.add(new ArrayList<>(list));
-        } else if (list.size() < nums.size()) {
-            for (int i = 0; i < nums.size(); i++) {
-                if (used[i]) continue;
-                if (i > 0 && nums.get(i) == nums.get(i - 1) && !used[i - 1]) continue;
-                list.add(nums.get(i));
-                used[i] = true;
-                backtrack3(res, list, used, nums);
-                list.remove(list.size() - 1);
-                used[i] = false;
-            }
-        }
-    }
-
 }
