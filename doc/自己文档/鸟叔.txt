@@ -1,0 +1,223 @@
+la -- 查看隐藏文件
+ls -al 同上 查看当前目录的test开头文件 ls -l ./test*
+date -- 查看日期可以跟很多参数 date +%H 参数
+cal 日历 calendar cal 2000 cal 10 2000
+bc 计算机
+man +命令 帮助
+info + 命令 查看信息
+
+nano启动文本编辑
+shutdown reboot halt poweroff 关机指令
+
+chgrp 改变文件所属分组 ex： chgrp [组名] [文件名]
+chown 改变文件拥有者 ex：chown [用户] [文件名] 
+chmod 改变文件属性  chmod 777 a.txt chmod u=rw;go=rx a.txt
+env 查看环境变量
+
+cp 复制文件 ex: cp a.txt /home/mihao/a.txt 复制文件夹 cp; -r [原文件] [目标文件] ;-p/-a:连同目标的文件权限cp过去
+pwd 显示当当前目录
+head  查看文件头部 默认显示10行
+mkdir 创建目录 mkdir -p dir1/dir2/dir3 连续简历目录 mkdir -m 774 初始化文件权限
+rmdir 删除目录 默认删除空的 如果有文件 rmdir -r
+touch [名字]创建一个名字是**的空文件
+PATH项目 将目录添加到环境中 PATH="${PATH}:/[目标目录]" ex： PATH="${PATH}:/[myPath]"
+file [我呢间] 查看文件信息
+whereis 只在特定的文件夹下查找
+locate 通过数据库查找
+find [路径] -name 全局查找
+查找文件
+
+文件压缩 
+gzip [] [文件] 
+zcat 读取压缩文本文件的信息
+bzip2
+xz
+tar 命令前面加上time统计运行时间
+[dmtsai@study ~]$ tar [-z|-j|-J] [xv] [-f 既有的 tar 檔名] [-C 目录] <==解压缩 
+示例：tar -czv -f aa.tar.gz aa/
+选项与参数：
+ -c ：建立打包文件,可搭配 -v 来察看过程中被打包的档名(filename) -t ：察看打包文件的内容含有哪些档名,重点在察看『档名』就是了；
+ -x ：解打包或解压缩的功能,可以搭配 -C (大写) 在特定目录解开 特别留意的是, -c,-t, -x 不可同时出现在一串指令列中.
+ -z ：透过 gzip 的支持进行压缩/解压缩：此时档名最好为 *.tar.gz
+ -j ：透过 bzip2 的支持进行压缩/解压缩：此时档名最好为 *.tar.bz2
+ -J ：透过 xz 的支持进行压缩/解压缩：此时档名最好为 *.tar.xz
+ 特别留意, -z, -j, -J 不可以同时出现在一串指令列中
+ -v ：在压缩/解压缩的过程中,将正在处理的文件名显示出来!
+ -f filename：-f 后面要立刻接要被处理的档名!建议 -f 单独写一个选项啰!(比较不会忘记)
+ -C 目录 ：这个选项用在解压缩,若要在特定目录解压缩,可以使用这个选项. 其他后续练习会使用到的选项介绍：
+ -p(小写) ：保留备份数据的原本权限与属性,常用于备份(-c)重要的配置文件
+ -P(大写) ：保留绝对路径,亦即允许备份数据中含有根目录存在之意； --exclude=FILE：在压缩的过程中,不要将 FILE 打包!
+unzip解压文件含有中文 unzip -O CP936 xxx.zip 防止乱码
+ 
+alias shell 命令别名
+如果要是别名永久生效则 修改 ~/.bashrc
+
+变量
+echo $[变量名] 查看变量
+设置变量 变量名=变量值 对-- （字符串）的类型截取 从前面截取 ${path#/u*:} 或者${path##/u*:}
+取消变量 unset 变量名
+read 读取一行
+declare 设置变量的类型 -i 数字 
+declare -p [变量名] 查看变量类型
+env 所有环境变量
+set 所有自定义变量
+
+管线命令 cut -d [分隔符] -f [找第一个]
+cut -c [找字符串的第几个]
+
+ex:
+pId=`ps -ef|grep ivr-outcall-0.0.1-SNAPSHOT.jar|grep java|tr -s [:space:]|cut -d ' ' -f 2`
+echo $pId
+kill $pId
+tr -s [:space:] 删除重复空格 只留一个
+
+grep 从结果中搜多 可用于管线 cat [fileName] | grep -v 'mihao'
+grep mihao 文件名
+sort 排序
+uniq 设置 相同只去一份 ex： 取出之前登录人的信息 并且以用户名排序 然后统计每个用户出现的次数 last | cut -d ' ' -f 1 | sort | uniq -c
+wc 统计 l 行 m 字符 w 字符
+tee 可以将 标准输出流 转成文件后 继续操作输出流
+tr -d [字符] 删除流中的所有字符  tr [a-z] [A-Z] 将小写替换成大写
+col -x 将Tab转成对应的空格
+join 处理两个关联文件
+paste 直接将两个文件逐行连接起来
+split 将一个大文件分成多个小文件
+xargs 将流中数据以' '和段行符分割 然后通过-n 来控制一次当做参数的个数 后面跟 命令（可以跟不能用于管线的命令）
+cat argsFile | xargs -n 1 echo 每次输出参数文件文件中的一个值
+sed  直接操作行号来操作数据 sed 's/[s1]/[s2]/g' 将s1替换成s2 ; sed -n '1,3p' 显示第一到第三行；
+sed '1d' 删除第一行 ;sed '2a' / sed '2i' 在第二行后 前增加新的一行; sed '2,3c *****'直接将****代替第一到3行
+print 有格式的输出
+awk 类似 sed  但是 倾向于将一行数据分割成在输出
+diff 对比两个类似的文章 
+patch 能根据diff 比较出来的文件流 更新文件
+cmp对比文件 一字节对比
+ nl == cat -n
+ 
+ 
+通过lsof命令查看某个特定的进程打开的文件数
+lsof -p 1296 | wc -l
+
+last 显示最近用户登录的信息
+export 显示环境变量 
+id 可以查询用户 udi gid
+$()可以预先取得参数
+
+passwd 修改密码
+
+进程与服务
+查看所有进程 ps aux
+top 持续监听进程动作
+
+https://www.cnblogs.com/zhaoyanjun/p/9204476.html
+
+netstat -apn | grep 8080
+查询8080端口的进程
+如果要查询这个进程的详情：
+ps -aux | grep xxx
+
+查看某一端口的连接数量,比如3306端口
+netstat -ap |grep :3306 |wc
+查看一个服务有几个端口。比如要查看mysqld
+ps -ef |grep mysqld
+
+常用服务命令
+所有的service的目录 /etc/init.d/
+service [服务/vsftpd] [start/stop/restart] 
+
+MySql 
+登入mysql服务
+mysql -r [用户名] -p
+
+nginx 
+
+
+timedatectl set-time 2019-12-02 16:07:00
+
+ 
+ 
+1）启动 Tomcat 7
+sudo service tomcat7 start
+2）关闭 Tomcat 7
+sudo service tomcat7 stop
+3）重启 Tomcat 7
+sudo service tomcat7 start
+
+测试 curl http://localhost:8080
+目录
+/etc/tomcat7 　　：全局配置
+/usr/share/tomcat7/ 　　：程序主目录
+/usr/share/tomcat7/conf/Catalina/localhost/ 　　：本机部署的 Catalina 配置
+/var/lib/tomcat7/ 　　：工作主目录
+/var/lib/tomcat7/webapps 　　：应用文件实际存放于此
+/var/lib/tomcat7/work 　　：动态工作目录（动态编译的 .jsp 存放于此）
+
+
+任务调度 命令需要安装
+crontab
+crontab -l 查看所有的命令
+crontab -e 编辑任务调度
+https://www.cnblogs.com/cqlb/p/9772207.html
+
+screen 命令的使用
+screen -ls 查看所有的Session
+screen -S *** 创建 *** 的屏幕
+screen -S -X *** quit 删除
+screen -r ***进入
+
+在screen 中
+Ctrl + a  之后 再按 D 退出
+https://blog.csdn.net/han0373/article/details/81352663
+
+显示登陆记录
+lastlog
+
+安装vim
+yum -y install vim-common
+
+排查磁盘空间不足
+https://blog.csdn.net/Yu_6651315/article/details/97115702
+df -h
+du -h --max-depth=1
+
+
+遇到问题
+apt-get install过程中出现“size mismatch”
+sudo apt-get update
+
+vim tab设置为4个空格
+vim /etc/vimrc 
+set ts=4
+set expandtab
+set autoindent
+
+
+安装redis  make 报错
+https://blog.csdn.net/weixin_40493969/article/details/81150469
+
+
+ubuntu14.04 apt-get由于源的问题导致无法下载问题解决
+https://blog.csdn.net/skyie53101517/article/details/50450989
+
+
+
+远程文件传输
+scp redis-5.0.2.tar.gz root@10.0.11.153:/home/
+https://blog.csdn.net/u010622613/article/details/80283398
+
+修改服务器时间
+date -s "20200405 23:57:00"  #yyyymmdd hh:mm:ss
+https://www.cnblogs.com/williamjie/p/10768657.html
+
+systemctl restart network 重启网卡
+
+
+
+windows电脑开启wifi给手机用
+netsh wlan set hostednetwork mode=allow ssid=mywifi2 key=12345678a
+netsh wlan start hostednetw
+
+windows 杀死进程
+netstat  -aon|findstr "8080"
+taskkill -F -pid 8888
+
+

@@ -1,0 +1,48 @@
+$ git checkout -b mh-eles
+创建并切换分支
+
+$ git branch
+查看所有分支 和所属分支
+
+$ git branch -d MH
+删除不需要的分支
+
+$ git push origin mh-eles:mh-eles
+将本地分支 推送到远程 分支上
+
+$ git pull origin master
+与远端分支同步
+
+$ git merge dev
+在新分支dev上开发之后 切换回master用这个命令更新master
+
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+分支上出现master|MERGING git reset --hard head
+
+git 初始化voiceapi-web项目
+
+git checkout -b master origin/master
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+git 切换远程分支
+git clone只能clone远程库的master分支，无法clone所有分支，解决办法如下：
+1. 找一个干净目录，假设是git_work
+2. cd git_work
+3. git clone http://myrepo.xxx.com/project/.git ,这样在git_work目录下得到一个project子目录
+4. cd project
+5. git branch -a，列出所有分支名称如下：
+remotes/origin/dev
+remotes/origin/release
+6. git checkout -b 5_1_0_mihao origin/5_1_0，作用是checkout远程的dev分支，在本地起名为dev分支，并切换到本地的dev分支
+7. git checkout -b release origin/release，作用参见上一步解释
+8. git checkout dev，切换回dev分支，并开始开发。
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
