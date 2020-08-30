@@ -24,6 +24,7 @@ public class Code336回文对 {
 
     public static void main(String[] args) {
 
+
     }
 
     public static List<List<Integer>> palindromePairs(String[] words) {

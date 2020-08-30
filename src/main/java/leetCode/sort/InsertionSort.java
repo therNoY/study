@@ -22,6 +22,12 @@ public class InsertionSort extends Sort {
 
 
     public void mySort(int[] nums) {
-
+        for (int i = 1; i < nums.length; i++) {
+            int index = i;
+            while (index > 0 && nums[index] < nums[index - 1]) {
+                swap(nums, index, index - 1);
+                index --;
+            }
+        }
     }
 }
