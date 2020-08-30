@@ -3,8 +3,8 @@ package data_structure;
 import java.util.*;
 
 /**
- * 实现的二叉堆
- *
+ * 实现的小顶堆
+ * 对于每一个节点 他的值总比他的子节点小
  * @param <E>
  */
 public class BinaryHeap<E> extends AbstractQueue<E> implements java.io.Serializable {
